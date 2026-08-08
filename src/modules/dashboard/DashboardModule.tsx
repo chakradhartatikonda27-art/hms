@@ -29,8 +29,6 @@ export const DashboardModule: React.FC<DashboardModuleProps> = (props) => {
     handleQrRegistrationScan = () => {},
     handleOcrScanSimulation = () => {},
     handleRegFormNameChange = () => {},
-    ipdTab = 'overview',
-    setIpdTab = () => {},
     handleBedTransfer = () => {},
     handleGcsSelect = () => {},
     selectedIcuBedId = '',
@@ -43,11 +41,7 @@ export const DashboardModule: React.FC<DashboardModuleProps> = (props) => {
     handleAdministerEmar = () => {},
     selectedOtId = '',
     setSelectedOtId = () => {},
-    otSubTab = 'schedule',
-    setOtSubTab = () => {},
     handleScheduleSurgery = () => {},
-    labSubTab = 'queue',
-    setLabSubTab = () => {},
     selectedLabReportId = '',
     setSelectedLabReportId = () => {},
     showBarcodeModal = false,
@@ -67,8 +61,6 @@ export const DashboardModule: React.FC<DashboardModuleProps> = (props) => {
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
     handleLabResultSubmit = () => {},
-    radSubTab = 'worklist',
-    setRadSubTab = () => {},
     showPacsViewerModal = false,
     setShowPacsViewerModal = () => {},
     showDeliveryModal = false,
@@ -89,8 +81,6 @@ export const DashboardModule: React.FC<DashboardModuleProps> = (props) => {
     setRadVoiceText = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
-    pmsSubTab = 'pos',
-    setPmsSubTab = () => {},
     pharmacyLanguage = 'en',
     setPharmacyLanguage = () => {},
     pharmacyDeptFilter = 'all',
@@ -152,6 +142,7 @@ export const DashboardModule: React.FC<DashboardModuleProps> = (props) => {
   const branchOccupancyRate = props.branchOccupancyRate || 84;
   const branchOccupiedBedsCount = props.branchOccupiedBedsCount || 42;
   const branchTotalBedsCount = props.branchTotalBedsCount || 50;
+  const setIpdTab = props.setIpdTab || (() => {});
 
 
   return (

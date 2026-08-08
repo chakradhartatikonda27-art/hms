@@ -29,8 +29,6 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     handleQrRegistrationScan = () => {},
     handleOcrScanSimulation = () => {},
     handleRegFormNameChange = () => {},
-    ipdTab = 'overview',
-    setIpdTab = () => {},
     handleBedTransfer = () => {},
     handleGcsSelect = () => {},
     selectedIcuBedId = '',
@@ -43,11 +41,7 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     handleAdministerEmar = () => {},
     selectedOtId = '',
     setSelectedOtId = () => {},
-    otSubTab = 'schedule',
-    setOtSubTab = () => {},
     handleScheduleSurgery = () => {},
-    labSubTab = 'queue',
-    setLabSubTab = () => {},
     selectedLabReportId = '',
     setSelectedLabReportId = () => {},
     showBarcodeModal = false,
@@ -67,8 +61,6 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
     handleLabResultSubmit = () => {},
-    radSubTab = 'worklist',
-    setRadSubTab = () => {},
     showPacsViewerModal = false,
     setShowPacsViewerModal = () => {},
     showDeliveryModal = false,
@@ -89,8 +81,6 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     setRadVoiceText = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
-    pmsSubTab = 'pos',
-    setPmsSubTab = () => {},
     pharmacyLanguage = 'en',
     setPharmacyLanguage = () => {},
     pharmacyDeptFilter = 'all',
@@ -144,6 +134,7 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     ...rest
   } = props;
 
+  const [ipdTab, setIpdTab] = React.useState('overview');
   const [selectedIpdPatientId, setSelectedIpdPatientId] = React.useState('PX-2026-9041');
   const [showAdmissionModal, setShowAdmissionModal] = React.useState(false);
   const [newAdmissionName, setNewAdmissionName] = React.useState('');

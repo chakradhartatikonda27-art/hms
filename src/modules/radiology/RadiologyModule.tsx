@@ -29,8 +29,6 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     handleQrRegistrationScan = () => {},
     handleOcrScanSimulation = () => {},
     handleRegFormNameChange = () => {},
-    ipdTab = 'overview',
-    setIpdTab = () => {},
     handleBedTransfer = () => {},
     handleGcsSelect = () => {},
     selectedIcuBedId = '',
@@ -43,11 +41,7 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     handleAdministerEmar = () => {},
     selectedOtId = '',
     setSelectedOtId = () => {},
-    otSubTab = 'schedule',
-    setOtSubTab = () => {},
     handleScheduleSurgery = () => {},
-    labSubTab = 'queue',
-    setLabSubTab = () => {},
     selectedLabReportId = '',
     setSelectedLabReportId = () => {},
     showBarcodeModal = false,
@@ -67,8 +61,6 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
     handleLabResultSubmit = () => {},
-    radSubTab = 'worklist',
-    setRadSubTab = () => {},
     showPacsViewerModal = false,
     setShowPacsViewerModal = () => {},
     showDeliveryModal = false,
@@ -89,8 +81,6 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     setRadVoiceText = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
-    pmsSubTab = 'pos',
-    setPmsSubTab = () => {},
     pharmacyLanguage = 'en',
     setPharmacyLanguage = () => {},
     pharmacyDeptFilter = 'all',
@@ -144,6 +134,7 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     ...rest
   } = props;
 
+  const [radSubTab, setRadSubTab] = React.useState('workflow_pipeline');
   const [showFormFDialog, setShowFormFDialog] = React.useState(false);
   const [formFData, setFormFData] = React.useState<any>({ patientName: '', age: '', gpaStatus: '', declarationSigned: false, regNo: '' });
   const [radPackages, setRadPackages] = React.useState([

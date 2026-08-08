@@ -29,8 +29,6 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     handleQrRegistrationScan = () => {},
     handleOcrScanSimulation = () => {},
     handleRegFormNameChange = () => {},
-    ipdTab = 'overview',
-    setIpdTab = () => {},
     handleBedTransfer = () => {},
     handleGcsSelect = () => {},
     selectedIcuBedId = '',
@@ -43,11 +41,7 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     handleAdministerEmar = () => {},
     selectedOtId = '',
     setSelectedOtId = () => {},
-    otSubTab = 'schedule',
-    setOtSubTab = () => {},
     handleScheduleSurgery = () => {},
-    labSubTab = 'queue',
-    setLabSubTab = () => {},
     selectedLabReportId = '',
     setSelectedLabReportId = () => {},
     showBarcodeModal = false,
@@ -67,8 +61,6 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
     handleLabResultSubmit = () => {},
-    radSubTab = 'worklist',
-    setRadSubTab = () => {},
     showPacsViewerModal = false,
     setShowPacsViewerModal = () => {},
     showDeliveryModal = false,
@@ -89,8 +81,6 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     setRadVoiceText = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
-    pmsSubTab = 'pos',
-    setPmsSubTab = () => {},
     pharmacyLanguage = 'en',
     setPharmacyLanguage = () => {},
     pharmacyDeptFilter = 'all',
@@ -144,6 +134,7 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     ...rest
   } = props;
 
+  const [labSubTab, setLabSubTab] = React.useState('workflow_board');
   const [showLabBookingModal, setShowLabBookingModal] = React.useState(false);
   const [labEntryId, setLabEntryId] = React.useState('');
   const [labEntryValue, setLabEntryValue] = React.useState('');

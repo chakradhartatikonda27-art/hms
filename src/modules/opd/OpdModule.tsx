@@ -29,8 +29,6 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     handleQrRegistrationScan = () => {},
     handleOcrScanSimulation = () => {},
     handleRegFormNameChange = () => {},
-    ipdTab = 'overview',
-    setIpdTab = () => {},
     handleBedTransfer = () => {},
     handleGcsSelect = () => {},
     selectedIcuBedId = '',
@@ -43,11 +41,7 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     handleAdministerEmar = () => {},
     selectedOtId = '',
     setSelectedOtId = () => {},
-    otSubTab = 'schedule',
-    setOtSubTab = () => {},
     handleScheduleSurgery = () => {},
-    labSubTab = 'queue',
-    setLabSubTab = () => {},
     selectedLabReportId = '',
     setSelectedLabReportId = () => {},
     showBarcodeModal = false,
@@ -67,8 +61,6 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
     handleLabResultSubmit = () => {},
-    radSubTab = 'worklist',
-    setRadSubTab = () => {},
     showPacsViewerModal = false,
     setShowPacsViewerModal = () => {},
     showDeliveryModal = false,
@@ -89,8 +81,6 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     setRadVoiceText = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
-    pmsSubTab = 'pos',
-    setPmsSubTab = () => {},
     pharmacyLanguage = 'en',
     setPharmacyLanguage = () => {},
     pharmacyDeptFilter = 'all',
@@ -144,6 +134,7 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     ...rest
   } = props;
 
+  const [opdSubTab, setOpdSubTab] = React.useState('consult');
   const [opdSearchQuery, setOpdSearchQuery] = React.useState('');
   const [opdFilter, setOpdFilter] = React.useState('all');
   const [soapSubjective, setSoapSubjective] = React.useState<any>({ chiefComplaint: 'Severe retrosternal pressure radiating to left arm', hpi: 'Patient reports progressive dyspnea and pressure over past 4 hours.', medicalHistory: 'Hypertension (8 years), Mild Dyslipidemia', familyHistory: 'Father: MI at age 52, Mother: Type 2 Diabetes', surgicalHistory: 'Appendectomy (2018)' });
@@ -168,7 +159,6 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
   const [newMed, setNewMed] = React.useState<any>({ medication: '', dosage: '', frequency: '', duration: '', instructions: '' });
   const [rxLanguage, setRxLanguage] = React.useState('English');
   const [newOrder, setNewOrder] = React.useState<any>({ testName: '', category: 'pathology', outsourced: false, outsourceLab: '', referralShare: '0' });
-  const [opdSubTab, setOpdSubTab] = React.useState('consult');
   const [opdCategoryFilter, setOpdCategoryFilter] = React.useState('all');
   const [newComplaints, setNewComplaints] = React.useState<any[]>([]);
   const [newComplaintText, setNewComplaintText] = React.useState('');

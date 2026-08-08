@@ -2407,6 +2407,7 @@ export default function App() {
               alerts={alerts}
               activeBranch={activeBranch}
               activeRole={activeRole}
+              setIpdTab={setIpdTab}
             />
           )}
 
@@ -2467,8 +2468,6 @@ export default function App() {
               beds={beds}
               setBeds={setBeds}
               branchBeds={branchBeds}
-              ipdTab={ipdTab}
-              setIpdTab={setIpdTab}
               handleBedTransfer={handleBedTransfer}
               handleGcsSelect={handleGcsSelect}
               patients={patients}
