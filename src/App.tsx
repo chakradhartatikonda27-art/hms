@@ -6,7 +6,7 @@ import {
   Printer, Sparkles, ChevronRight, ChevronLeft, UserPlus,
   Heart, Info, X, Sun, Moon,
   AlertCircle,
-  Send, Stethoscope, Video, MapPin, FileSpreadsheet, Plus, FileText, Mic, Scissors, Globe
+  Send, Stethoscope, Video, MapPin, FileSpreadsheet, Plus, FileText, Mic, Scissors, Globe, FolderArchive
 } from 'lucide-react';
 import { DashboardModule } from './modules/dashboard/DashboardModule';
 import { RegistrationModule } from './modules/registration/RegistrationModule';
@@ -567,19 +567,22 @@ export default function App() {
     icu: true,
     ot: true,
     wards: true,
+    lab: true,
+    pharmacy: true,
     bloodbank: true,
+    mrd: true,
     billing: true,
     analytics: true
   });
   const ROLE_PERMISSIONS: Record<string, Record<string, boolean>> = {
-    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, billing: true, analytics: true },
-    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, billing: false, analytics: true },
-    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, billing: false, analytics: false },
-    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, billing: false, analytics: false },
-    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, billing: true, analytics: false },
-    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, billing: false, analytics: false },
-    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, billing: true, analytics: false },
-    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, billing: true, analytics: true }
+    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, analytics: true },
+    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, analytics: true },
+    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, analytics: false },
+    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, analytics: false },
+    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, analytics: false },
+    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, analytics: false },
+    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, analytics: false },
+    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, analytics: true }
   };
 
   // Visibility Check Helper (Combines Admin Global Toggle + Role Access Control)
@@ -2197,18 +2200,31 @@ export default function App() {
             </>
           )}
 
-          {/* SECTION: FINANCE */}
-          {isModuleVisible('billing') && (
+          {/* SECTION: RECORDS & FINANCE */}
+          {(isModuleVisible('mrd') || isModuleVisible('billing')) && (
             <>
               {!sidebarCollapsed ? (
-                <div className="nav-section-title">FINANCE</div>
+                <div className="nav-section-title">RECORDS & FINANCE</div>
               ) : (
                 <div style={{ height: '8px', borderTop: '1px solid rgba(255,255,255,0.05)', margin: '8px 0' }}></div>
               )}
-              
-              <button onClick={() => setActiveTab('billing')} className={`sidebar-nav-item ${activeTab === 'billing' ? 'active' : ''}`} title="Billing & Claims">
-                {sidebarCollapsed ? <DollarSign size={18} /> : <span>Billing & Claims</span>}
-              </button>
+
+              {isModuleVisible('mrd') && (
+                <button onClick={() => setActiveTab('mrd')} className={`sidebar-nav-item ${activeTab === 'mrd' ? 'active' : ''}`} title="Medical Records (MRD)">
+                  {sidebarCollapsed ? <FolderArchive size={18} /> : (
+                    <>
+                      <span>Medical Records (MRD)</span>
+                      <span className="sidebar-badge" style={{ background: '#9333EA' }}>EHR</span>
+                    </>
+                  )}
+                </button>
+              )}
+
+              {isModuleVisible('billing') && (
+                <button onClick={() => setActiveTab('billing')} className={`sidebar-nav-item ${activeTab === 'billing' ? 'active' : ''}`} title="Billing & Claims">
+                  {sidebarCollapsed ? <DollarSign size={18} /> : <span>Billing & Claims</span>}
+                </button>
+              )}
             </>
           )}
 
