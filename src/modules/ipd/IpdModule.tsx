@@ -66,15 +66,7 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -164,9 +144,8 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
     ...rest
   } = props;
 
-  const [selectedIpdPatientId, setSelectedIpdPatientId] = React.useState('');
+  const [selectedIpdPatientId, setSelectedIpdPatientId] = React.useState('PX-2026-9041');
   const [showAdmissionModal, setShowAdmissionModal] = React.useState(false);
-  const [icuBeds, setIcuBeds] = React.useState<any[]>([]);
   const [newAdmissionName, setNewAdmissionName] = React.useState('');
   const [newAdmissionUnit, setNewAdmissionUnit] = React.useState('General Ward');
   const [newAdmissionBed, setNewAdmissionBed] = React.useState('BED-101');
@@ -182,6 +161,80 @@ export const IpdModule: React.FC<IpdModuleProps> = (props) => {
   const [drainOutput, setDrainOutput] = React.useState('100');
   const [selectedBedForTransfer, setSelectedBedForTransfer] = React.useState('');
   const [transferTargetBed, setTransferTargetBed] = React.useState('');
+  const [icuBeds, setIcuBeds] = React.useState([
+    {
+      id: 'PX-2026-9041',
+      bedNo: 'ICU-A2',
+      unit: 'CCU',
+      patientName: 'Aarav Sharma',
+      age: '58M',
+      acuityStatus: 'stable',
+      consultant: 'Dr. Sandeep Mehta',
+      dutyNurse: 'Sister Priya',
+      ventilatorStatus: 'FiO2 40% | PEEP 5',
+      pendingTasks: '12:00 IV Antibiotic',
+      bp: '135/85',
+      map: 101,
+      cvp: '8.5 cmH2O',
+      fio2: '40%',
+      peep: '5 cmH2O',
+      cardiacOutput: '5.2 L/min',
+      svo2: '72%',
+      abgPh: '7.39',
+      abgPaCO2: '38',
+      abgPaO2: '96',
+      drips: 'Norad 0.04 mcg/kg/min',
+      statOrdersCount: 2
+    },
+    {
+      id: 'PX-2026-9042',
+      bedNo: 'ICU-A3',
+      unit: 'SICU',
+      patientName: 'Ramesh Sen',
+      age: '64M',
+      acuityStatus: 'observation',
+      consultant: 'Dr. Ananya Ray',
+      dutyNurse: 'Sister Anjali',
+      ventilatorStatus: 'FiO2 50% | PEEP 8',
+      pendingTasks: 'Ventilator Weaning Trial',
+      bp: '145/92',
+      map: 109,
+      cvp: '11.2 cmH2O',
+      fio2: '50%',
+      peep: '8 cmH2O',
+      cardiacOutput: '4.8 L/min',
+      svo2: '68%',
+      abgPh: '7.32',
+      abgPaCO2: '46',
+      abgPaO2: '88',
+      drips: 'Dobutamine 0.08 mcg/kg/min',
+      statOrdersCount: 1
+    },
+    {
+      id: 'PX-2026-9043',
+      bedNo: 'ICU-B2',
+      unit: 'Neuro ICU',
+      patientName: 'Kabir Khan',
+      age: '42M',
+      acuityStatus: 'critical',
+      consultant: 'Dr. Deepa Roy',
+      dutyNurse: 'Sister Kavita',
+      ventilatorStatus: 'Off Vent (Nasal 2L)',
+      pendingTasks: 'Step-down Transfer',
+      bp: '110/65',
+      map: 80,
+      cvp: '6.5 cmH2O',
+      fio2: 'Room Air',
+      peep: 'None',
+      cardiacOutput: '5.8 L/min',
+      svo2: '75%',
+      abgPh: '7.42',
+      abgPaCO2: '35',
+      abgPaO2: '98',
+      drips: 'Dopamine 0.05 mcg/kg/min',
+      statOrdersCount: 0
+    }
+  ]);
   const selectedIpdPatient = (props.patients || []).find((p: any) => p.id === selectedIpdPatientId) || props.patients?.[0];
 
 

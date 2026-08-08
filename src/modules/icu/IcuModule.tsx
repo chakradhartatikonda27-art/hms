@@ -66,15 +66,7 @@ export const IcuModule: React.FC<IcuModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const IcuModule: React.FC<IcuModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const IcuModule: React.FC<IcuModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -164,17 +144,98 @@ export const IcuModule: React.FC<IcuModuleProps> = (props) => {
     ...rest
   } = props;
 
-  const [icuSubTab, setIcuSubTab] = React.useState('telemetry');
+  const [icuSubTab, setIcuSubTab] = React.useState('whiteboard');
   const [showCodeBlueModal, setShowCodeBlueModal] = React.useState(false);
   const [showAdmissionModal, setShowAdmissionModal] = React.useState(false);
   const [newHandoverBed, setNewHandoverBed] = React.useState('ICU Bed 1');
   const [newHandoverText, setNewHandoverText] = React.useState('');
-  const [icuHandovers, setIcuHandovers] = React.useState<any[]>([]);
-  const [codeBlueLogs, setCodeBlueLogs] = React.useState<any[]>([]);
-  const [hourlyLogs, setHourlyLogs] = React.useState<any[]>([]);
-  const [icuBeds, setIcuBeds] = React.useState<any[]>([]);
   const [showIcuDischargeModal, setShowIcuDischargeModal] = React.useState(false);
   const [showIcuConsentModal, setShowIcuConsentModal] = React.useState(false);
+  const [icuBeds, setIcuBeds] = React.useState([
+    {
+      id: 'PX-2026-9041',
+      bedNo: 'ICU-A2',
+      unit: 'CCU',
+      patientName: 'Aarav Sharma',
+      age: '58M',
+      acuityStatus: 'stable',
+      consultant: 'Dr. Sandeep Mehta',
+      dutyNurse: 'Sister Priya',
+      ventilatorStatus: 'FiO2 40% | PEEP 5',
+      pendingTasks: '12:00 IV Antibiotic',
+      bp: '135/85',
+      map: 101,
+      cvp: '8.5 cmH2O',
+      fio2: '40%',
+      peep: '5 cmH2O',
+      cardiacOutput: '5.2 L/min',
+      svo2: '72%',
+      abgPh: '7.39',
+      abgPaCO2: '38',
+      abgPaO2: '96',
+      drips: 'Norad 0.04 mcg/kg/min',
+      statOrdersCount: 2
+    },
+    {
+      id: 'PX-2026-9042',
+      bedNo: 'ICU-A3',
+      unit: 'SICU',
+      patientName: 'Ramesh Sen',
+      age: '64M',
+      acuityStatus: 'observation',
+      consultant: 'Dr. Ananya Ray',
+      dutyNurse: 'Sister Anjali',
+      ventilatorStatus: 'FiO2 50% | PEEP 8',
+      pendingTasks: 'Ventilator Weaning Trial',
+      bp: '145/92',
+      map: 109,
+      cvp: '11.2 cmH2O',
+      fio2: '50%',
+      peep: '8 cmH2O',
+      cardiacOutput: '4.8 L/min',
+      svo2: '68%',
+      abgPh: '7.32',
+      abgPaCO2: '46',
+      abgPaO2: '88',
+      drips: 'Dobutamine 0.08 mcg/kg/min',
+      statOrdersCount: 1
+    },
+    {
+      id: 'PX-2026-9043',
+      bedNo: 'ICU-B2',
+      unit: 'Neuro ICU',
+      patientName: 'Kabir Khan',
+      age: '42M',
+      acuityStatus: 'critical',
+      consultant: 'Dr. Deepa Roy',
+      dutyNurse: 'Sister Kavita',
+      ventilatorStatus: 'Off Vent (Nasal 2L)',
+      pendingTasks: 'Step-down Transfer',
+      bp: '110/65',
+      map: 80,
+      cvp: '6.5 cmH2O',
+      fio2: 'Room Air',
+      peep: 'None',
+      cardiacOutput: '5.8 L/min',
+      svo2: '75%',
+      abgPh: '7.42',
+      abgPaCO2: '35',
+      abgPaO2: '98',
+      drips: 'Dopamine 0.05 mcg/kg/min',
+      statOrdersCount: 0
+    }
+  ]);
+  const [icuHandovers, setIcuHandovers] = React.useState([
+    { id: 1, author: 'Sister Priya → Sister Anjali', time: '08:00 AM', bed: 'ICU-A2 (Aarav Sharma)', text: 'Norad drip stable @ 0.04. ABG pH 7.39. Arterial line zeroed.' },
+    { id: 2, author: 'Dr. Sandeep Mehta → Dr. Deepa Roy', time: '09:30 AM', bed: 'ICU-A3 (Ramesh Sen)', text: 'Plan weaning trial at 14:00 if PaO2 > 90 on PEEP 5.' }
+  ]);
+  const [hourlyLogs, setHourlyLogs] = React.useState([
+    { id: 1, time: '09:00 AM', map: 101, cvp: 8.5, urine: '45mL', status: 'Logged' },
+    { id: 2, time: '10:00 AM', map: 98, cvp: 8.2, urine: '40mL', status: 'Logged' }
+  ]);
+  const [codeBlueLogs, setCodeBlueLogs] = React.useState([
+    { id: 1, bed: 'ICU-A2 (Aarav Sharma)', time: '2026-08-07 22:15 PM', cpr: '2 min 30 sec', shocks: '1 shock 200J', result: 'ROSC Restored @ 22:18' }
+  ]);
 
 
   return (

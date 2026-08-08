@@ -66,15 +66,7 @@ export const BillingModule: React.FC<BillingModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const BillingModule: React.FC<BillingModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const BillingModule: React.FC<BillingModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -167,6 +147,11 @@ export const BillingModule: React.FC<BillingModuleProps> = (props) => {
   const [expCategory, setExpCategory] = React.useState('Medical Supplies');
   const [expAmount, setExpAmount] = React.useState('');
   const [expDesc, setExpDesc] = React.useState('');
+  const [refDoctorEarnings, setRefDoctorEarnings] = React.useState([
+    { id: 1, doctorName: 'Dr. Sandeep Mehta', testName: 'Lipid Profile & HbA1c', fee: 1800, sharePercent: 15, payout: 270, status: 'Approved' },
+    { id: 2, doctorName: 'Dr. Ananya Ray', testName: 'Brain MRI Contrast', fee: 6500, sharePercent: 20, payout: 1300, status: 'Pending Audit' },
+    { id: 3, doctorName: 'Dr. Deepa Roy', testName: 'Whole Abdomen CT', fee: 4200, sharePercent: 15, payout: 630, status: 'Disbursed' }
+  ]);
 
 
   return (

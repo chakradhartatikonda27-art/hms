@@ -66,15 +66,7 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -166,6 +146,22 @@ export const RadiologyModule: React.FC<RadiologyModuleProps> = (props) => {
 
   const [showFormFDialog, setShowFormFDialog] = React.useState(false);
   const [formFData, setFormFData] = React.useState<any>({ patientName: '', age: '', gpaStatus: '', declarationSigned: false, regNo: '' });
+  const [radPackages, setRadPackages] = React.useState([
+    { id: 'RPKG-101', name: 'Comprehensive Neuro Imaging Package (Brain CT + Spine MRI)', modality: 'CT + MRI', price: 9500, originalPrice: 14000, testsCount: 2, status: 'Active' },
+    { id: 'RPKG-102', name: 'Executive Cardiac & Vascular CT Angiography', modality: '128-Slice CT', price: 7999, originalPrice: 12000, testsCount: 1, status: 'Active' },
+    { id: 'RPKG-103', name: 'Full Body Wellness MRI & USG Screening', modality: '3T MRI + USG', price: 14999, originalPrice: 22000, testsCount: 3, status: 'Active' }
+  ]);
+  const [radMachines, setRadMachines] = React.useState([
+    { id: 'MCH-3T-01', name: 'Siemens Magnetom 3T MRI Suite', room: 'MRI Bay 1', status: 'Operational', uptime: '99.2%', nextService: '2026-09-15', techOnDuty: 'Rajesh Kumar (Tech)' },
+    { id: 'MCH-CT-02', name: 'GE Revolution 128-Slice CT Scanner', room: 'CT Suite 2', status: 'Operational', uptime: '98.7%', nextService: '2026-08-25', techOnDuty: 'Amit Verma (Tech)' },
+    { id: 'MCH-USG-03', name: 'Philips HD11 XE Ultrasound & Doppler', room: 'USG Room 3', status: 'Maintenance', uptime: '94.5%', nextService: '2026-08-10', techOnDuty: 'Pooja Singh (Tech)' }
+  ]);
+  const [radiologyWorklist, setRadiologyWorklist] = React.useState([
+    { id: 'RAD-2026-801', patientName: 'Priya Sharma', modality: 'USG', studyName: 'Obstetric Anomaly Scan (PC-PNDT Form F)', priority: 'Routine', prepStatus: 'NPO Fasting OK', requestedBy: 'Dr. Ananya Ray', date: '2026-08-08 09:15 AM', status: 'PACS Captured', formFSigned: true, criticalFlag: false },
+    { id: 'RAD-2026-802', patientName: 'Ramesh Sen', modality: 'CT', studyName: 'NCCT Head / Brain (Trauma Rule-Out)', priority: 'STAT', prepStatus: 'Immediate Scan', requestedBy: 'Dr. Sandeep Mehta', date: '2026-08-08 08:30 AM', status: 'Report Signed Off', formFSigned: false, criticalFlag: true },
+    { id: 'RAD-2026-803', patientName: 'Aarav Sharma', modality: 'MRI', studyName: 'MRI Lumbar Spine Contrast', priority: 'Urgent', prepStatus: 'Metal Safety Screened', requestedBy: 'Dr. Deepa Roy', date: '2026-08-07 04:45 PM', status: 'Awaiting Sign-off', formFSigned: false, criticalFlag: false },
+    { id: 'RAD-2026-804', patientName: 'Meena Gupta', modality: 'X-Ray', studyName: 'Chest X-Ray PA View', priority: 'Routine', prepStatus: 'Standard Prep', requestedBy: 'Dr. Sandeep Mehta', date: '2026-08-08 10:00 AM', status: 'PACS Captured', formFSigned: false, criticalFlag: false }
+  ]);
 
 
   return (

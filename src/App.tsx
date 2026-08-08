@@ -2519,12 +2519,6 @@ export default function App() {
               setShowDeltaCheckModal={setShowDeltaCheckModal}
               showReagentModal={showReagentModal}
               setShowReagentModal={setShowReagentModal}
-              testPackages={testPackages}
-              setTestPackages={setTestPackages}
-              reagentsList={reagentsList}
-              setReagentsList={setReagentsList}
-              outsourcedSamples={outsourcedSamples}
-              setOutsourcedSamples={setOutsourcedSamples}
               handleLabResultSubmit={handleLabResultSubmit}
             />
           )}
@@ -2534,8 +2528,6 @@ export default function App() {
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               addToast={addToast}
-              radiologyWorklist={radiologyWorklist}
-              setRadiologyWorklist={setRadiologyWorklist}
               showPacsViewerModal={showPacsViewerModal}
               setShowPacsViewerModal={setShowPacsViewerModal}
               showDeliveryModal={showDeliveryModal}
@@ -2554,10 +2546,6 @@ export default function App() {
               setSelectedRadTemplate={setSelectedRadTemplate}
               radVoiceText={radVoiceText}
               setRadVoiceText={setRadVoiceText}
-              radPackages={radPackages}
-              setRadPackages={setRadPackages}
-              radMachines={radMachines}
-              setRadMachines={setRadMachines}
               setShowFormFDialog={setShowFormFDialog}
             />
           )}
@@ -2587,12 +2575,6 @@ export default function App() {
               setShowVoiceBillingModal={setShowVoiceBillingModal}
               showOcrModal={showOcrModal}
               setShowOcrModal={setShowOcrModal}
-              pmsHoldBills={pmsHoldBills}
-              setPmsHoldBills={setPmsHoldBills}
-              pmsMedicines={pmsMedicines}
-              setPmsMedicines={setPmsMedicines}
-              pmsStores={pmsStores}
-              setPmsStores={setPmsStores}
               getDosageInstruction={getDosageInstruction}
               handleDispenseMeds={handleDispenseMeds}
             />
@@ -2609,8 +2591,6 @@ export default function App() {
               expenses={expenses}
               setExpenses={setExpenses}
               branchExpenses={branchExpenses}
-              refDoctorEarnings={refDoctorEarnings}
-              setRefDoctorEarnings={setRefDoctorEarnings}
               handleSettleBill={handleSettleBill}
               handleSettleReferralPayout={handleSettleReferralPayout}
               handleAddExpense={handleAddExpense}

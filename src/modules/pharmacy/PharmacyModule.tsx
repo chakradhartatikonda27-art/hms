@@ -66,15 +66,7 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -163,6 +143,20 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = (props) => {
     applyAdviceTemplate = () => {},
     ...rest
   } = props;
+
+  const [pmsHoldBills, setPmsHoldBills] = React.useState([
+    { id: 'HOLD-801', customerName: 'Rohan Mehta', itemsCount: 3, total: 450, time: '11:20 AM' }
+  ]);
+  const [pmsMedicines, setPmsMedicines] = React.useState([
+    { id: 'MED-101', brand: 'Dolo 650mg', generic: 'Paracetamol', composition: 'Paracetamol IP 650mg', schedule: 'Schedule H', hsn: '30049099', gst: 12, mrp: 34, purchasePrice: 22, sellingPrice: 30, stock: 1240, expiry: '2027-10-15' },
+    { id: 'MED-102', brand: 'Augmentin 625mg', generic: 'Amoxicillin + Clavulanate', composition: 'Amoxicillin 500mg + Clavulanic Acid 125mg', schedule: 'Schedule H1', hsn: '30041010', gst: 12, mrp: 204, purchasePrice: 145, sellingPrice: 185, stock: 450, expiry: '2026-11-20' },
+    { id: 'MED-103', brand: 'Pan 40mg', generic: 'Pantoprazole', composition: 'Pantoprazole Sodium 40mg', schedule: 'Schedule H', hsn: '30049099', gst: 12, mrp: 155, purchasePrice: 98, sellingPrice: 135, stock: 890, expiry: '2027-04-30' }
+  ]);
+  const [pmsStores, setPmsStores] = React.useState([
+    { id: 'STR-001', name: 'Central Warehouse & Hub', type: 'Main Hub', location: 'Medical College Zone', stockValue: '₹48,50,000', manager: 'Suresh Kumar' },
+    { id: 'STR-002', name: 'Downtown Retail Store', type: 'Retail Branch', location: 'MG Road Plaza', stockValue: '₹12,40,000', manager: 'Anita Verma' },
+    { id: 'STR-003', name: 'Airport Metro Branch', type: 'Express POS', location: 'Terminal 2 Concourse', stockValue: '₹6,80,000', manager: 'Vikram Joshi' }
+  ]);
 
 
   return (

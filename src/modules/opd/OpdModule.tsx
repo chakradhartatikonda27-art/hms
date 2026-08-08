@@ -66,15 +66,7 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -166,26 +146,28 @@ export const OpdModule: React.FC<OpdModuleProps> = (props) => {
 
   const [opdSearchQuery, setOpdSearchQuery] = React.useState('');
   const [opdFilter, setOpdFilter] = React.useState('all');
-  const [soapSubjective, setSoapSubjective] = React.useState<any>({ chiefComplaint: '', hpi: '', medicalHistory: '', familyHistory: '', surgicalHistory: '' });
-  const [soapObjective, setSoapObjective] = React.useState<any>({ height: '', weight: '', painScale: '0', lifestyle: '', mentalHealth: '' });
-  const [soapAssessment, setSoapAssessment] = React.useState<any>({ diagnosisCode: '', differential: '' });
-  const [soapPlan, setSoapPlan] = React.useState<any>({ treatment: '', referralSpecialist: '' });
-  const [calculatedVitalMetrics, setCalculatedVitalMetrics] = React.useState<any>({ bmi: '22.4', bpStatus: 'Optimal' });
-  const [selectedTemplate, setSelectedTemplate] = React.useState('');
+  const [soapSubjective, setSoapSubjective] = React.useState<any>({ chiefComplaint: 'Severe retrosternal pressure radiating to left arm', hpi: 'Patient reports progressive dyspnea and pressure over past 4 hours.', medicalHistory: 'Hypertension (8 years), Mild Dyslipidemia', familyHistory: 'Father: MI at age 52, Mother: Type 2 Diabetes', surgicalHistory: 'Appendectomy (2018)' });
+  const [soapObjective, setSoapObjective] = React.useState<any>({ height: 175, weight: 82, painScale: 6, lifestyle: 'High operational stress, low cardio', mentalHealth: 'PHQ-9 Score: 5 (Mild depressive indicators)' });
+  const [soapAssessment, setSoapAssessment] = React.useState<any>({ diagnosisCode: 'Essential hypertension [I10]', differential: 'Angina Pectoris, Coronary Artery Disease, Myocardial Infarction' });
+  const [soapPlan, setSoapPlan] = React.useState<any>({ treatment: 'Prescribe Telmisartan 40mg PO QD, Lipvas 10mg PO HS. Restrict sodium.', referralSpecialist: 'Cardiology (Internal)' });
+  const [calculatedVitalMetrics, setCalculatedVitalMetrics] = React.useState<any>({ bmi: '26.8', bpStatus: 'Stage 1 HTN' });
+  const [selectedTemplate, setSelectedTemplate] = React.useState('Standard Adult Assessment');
   const [doctorDictating, setDoctorDictating] = React.useState(false);
-  const [followupDate, setFollowupDate] = React.useState('');
-  const [followupChannel, setFollowupChannel] = React.useState('In-Person Clinic');
+  const [followupDate, setFollowupDate] = React.useState('2026-08-22');
+  const [followupChannel, setFollowupChannel] = React.useState('WhatsApp');
   const [followupRecurring, setFollowupRecurring] = React.useState(false);
-  const [showAiPanel, setShowAiPanel] = React.useState(false);
-  const [aiAnalysisType, setAiAnalysisType] = React.useState('triage');
-  const [aiAssistantChat, setAiAssistantChat] = React.useState<any[]>([]);
+  const [showAiPanel, setShowAiPanel] = React.useState(true);
+  const [aiAnalysisType, setAiAnalysisType] = React.useState('summary');
+  const [aiAssistantChat, setAiAssistantChat] = React.useState<any[]>([
+    { sender: 'ai', text: "Hello Dr. Sandeep. I can analyze patient vitals, predict potential disease paths, check drug-drug interactions, or write custom summaries. How can I help you today?" }
+  ]);
   const [aiAssistantQuery, setAiAssistantQuery] = React.useState('');
   const [digitalSignatureChecked, setDigitalSignatureChecked] = React.useState(true);
   const [selectedTabCategory, setSelectedTabCategory] = React.useState('general');
   const [consultationNotes, setConsultationNotes] = React.useState('');
-  const [newMed, setNewMed] = React.useState<any>({ name: '', dosage: '', frequency: '', duration: '', instructions: '' });
-  const [rxLanguage, setRxLanguage] = React.useState('en');
-  const [newOrder, setNewOrder] = React.useState<any>({ testName: '', type: 'lab', priority: 'Routine', notes: '' });
+  const [newMed, setNewMed] = React.useState<any>({ medication: '', dosage: '', frequency: '', duration: '', instructions: '' });
+  const [rxLanguage, setRxLanguage] = React.useState('English');
+  const [newOrder, setNewOrder] = React.useState<any>({ testName: '', category: 'pathology', outsourced: false, outsourceLab: '', referralShare: '0' });
   const [opdSubTab, setOpdSubTab] = React.useState('consult');
   const [opdCategoryFilter, setOpdCategoryFilter] = React.useState('all');
   const [newComplaints, setNewComplaints] = React.useState<any[]>([]);

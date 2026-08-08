@@ -66,15 +66,7 @@ export const OtModule: React.FC<OtModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const OtModule: React.FC<OtModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const OtModule: React.FC<OtModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -174,15 +154,12 @@ export const OtModule: React.FC<OtModuleProps> = (props) => {
   const [newOtSurgeon, setNewOtSurgeon] = React.useState('Dr. Sandeep Mehta');
   const [newOtAnesthetist, setNewOtAnesthetist] = React.useState('Dr. K. R. Iyer');
   const [newOtCategory, setNewOtCategory] = React.useState('Elective');
-  const [otSurgeries, setOtSurgeries] = React.useState<any[]>([]);
   const [showWhoChecklistModal, setShowWhoChecklistModal] = React.useState(false);
   const [showOtTeamModal, setShowOtTeamModal] = React.useState(false);
   const [showImplantModal, setShowImplantModal] = React.useState(false);
   const [showAiDraftModal, setShowAiDraftModal] = React.useState(false);
-  const [anesthesiaLogs, setAnesthesiaLogs] = React.useState<any[]>([]);
   const [newAnesthesiaDrug, setNewAnesthesiaDrug] = React.useState('Propofol 100mg IV');
   const [newAnesthesiaTime, setNewAnesthesiaTime] = React.useState('09:15 AM');
-  const [implantsList, setImplantsList] = React.useState<any[]>([]);
   const [implantName, setImplantName] = React.useState('');
   const [implantLotNo, setImplantLotNo] = React.useState('');
   const [implantSerialNo, setImplantSerialNo] = React.useState('');
@@ -192,12 +169,109 @@ export const OtModule: React.FC<OtModuleProps> = (props) => {
   const [teamAnesthetist, setTeamAnesthetist] = React.useState('Dr. K. R. Iyer');
   const [teamNurse, setTeamNurse] = React.useState('Sr. Sunita Rao');
   const [teamTech, setTeamTech] = React.useState('Tech. Ramesh');
-  const [surgeries, setSurgeries] = React.useState<any[]>([]);
   const [newSurgeryPatient, setNewSurgeryPatient] = React.useState('');
   const [newSurgeryProcedure, setNewSurgeryProcedure] = React.useState('');
   const [newSurgerySurgeon, setNewSurgerySurgeon] = React.useState('Dr. Sandeep Mehta');
   const [newSurgeryTime, setNewSurgeryTime] = React.useState('09:00 AM');
   const [newSurgeryRoom, setNewSurgeryRoom] = React.useState('OT Room 1');
+  const [otSurgeries, setOtSurgeries] = React.useState([
+    {
+      id: 'OT-2026-101',
+      patientName: 'Aarav Sharma',
+      patientId: 'PX-2026-9041',
+      otRoom: 'OT-1 (Cardiac Suite)',
+      procedure: 'Coronary Artery Bypass Graft (CABG)',
+      surgeon: 'Dr. Sandeep Mehta',
+      assistantSurgeon: 'Dr. Alok Verma',
+      anesthetist: 'Dr. Vikram Malhotra',
+      otNurse: 'Sister Sunita',
+      otTechnician: 'Tech Rahul',
+      timeSlot: '09:00 AM - 01:00 PM',
+      category: 'Planned Elective',
+      phase: 'In-Procedure', // 'Scheduled' | 'Preparing' | 'In-Procedure' | 'Recovery' | 'Completed'
+      anesthesiaType: 'General Anesthesia (ETT)',
+      pacStatus: 'Cleared (ASA Grade III)',
+      consentSigned: true,
+      bloodLossMl: 250,
+      spongeCount: '24/24 Verified',
+      preOpPrep: { NPO: true, siteMarked: true, ivAntibiotic: true, bloodCrossMatch: '2 Units PRBC Ready', equipmentVerified: true },
+      opNote: 'Successful 3-vessel CABG (LIMA to LAD, SVG to OM1, SVG to PDA). CPB time 78 min. Cross-clamp time 45 min. Chest closed with steel wires.',
+      whoChecklist: { signIn: true, timeOut: true, signOut: false },
+      delayTracking: 'On Schedule (0 min delay)',
+      implantDetails: 'Sternal Steel Wires (Lot #SW-9921, Exp 2032), Saphenous Vein Grafts',
+      billingTotal: 65400,
+      aiPredictedDuration: '3h 45m (Confidence 94%)',
+      aiPostOpRecommendation: 'Maintain MAP > 70 mmHg. Wean sedation in 6 hours. ICU Step-Down Target: Day 2.',
+      pacuStatus: 'In PACU Bed 1 | Aldrete Score 8/10 | Stable'
+    },
+    {
+      id: 'OT-2026-102',
+      patientName: 'Ramesh Sen',
+      patientId: 'PX-2026-9042',
+      otRoom: 'OT-2 (Neuro Suite)',
+      procedure: 'Craniotomy & Tumor Resection',
+      surgeon: 'Dr. Ananya Ray',
+      assistantSurgeon: 'Dr. Rohit Sharma',
+      anesthetist: 'Dr. Rajesh K',
+      otNurse: 'Sister Kavita',
+      otTechnician: 'Tech Suresh',
+      timeSlot: '02:00 PM - 06:00 PM',
+      category: 'Planned Elective',
+      phase: 'Preparing',
+      anesthesiaType: 'General Anesthesia',
+      pacStatus: 'Cleared (ASA Grade II)',
+      consentSigned: true,
+      bloodLossMl: 0,
+      spongeCount: 'Pending',
+      preOpPrep: { NPO: true, siteMarked: true, ivAntibiotic: false, bloodCrossMatch: '4 Units PRBC Ready', equipmentVerified: true },
+      opNote: '',
+      whoChecklist: { signIn: true, timeOut: false, signOut: false },
+      delayTracking: 'Minor Prep Delay (10 min)',
+      implantDetails: 'Titanium Cranial Plate & Screws (Lot #CP-4012)',
+      billingTotal: 58200,
+      aiPredictedDuration: '4h 15m (Confidence 91%)',
+      aiPostOpRecommendation: 'Frequent neuro checks 1-hourly. Keep head elevated 30 degrees.',
+      pacuStatus: 'Scheduled for PACU Bed 3'
+    },
+    {
+      id: 'OT-2026-103',
+      patientName: 'Kabir Khan',
+      patientId: 'PX-2026-9043',
+      otRoom: 'OT-4 (Emergency OT)',
+      procedure: 'Emergency Laparotomy & Splenectomy',
+      surgeon: 'Dr. Deepa Roy',
+      assistantSurgeon: 'Dr. Manish Kumar',
+      anesthetist: 'Dr. Vikram Malhotra',
+      otNurse: 'Sister Anjali',
+      otTechnician: 'Tech Amit',
+      timeSlot: 'NOW (STAT)',
+      category: 'Emergency STAT',
+      phase: 'Preparing',
+      anesthesiaType: 'Rapid Sequence Intubation',
+      pacStatus: 'Emergency Clearance (ASA Grade IV-E)',
+      consentSigned: true,
+      bloodLossMl: 600,
+      spongeCount: 'Pending',
+      preOpPrep: { NPO: false, siteMarked: true, ivAntibiotic: true, bloodCrossMatch: '6 Units PRBC Dispatched', equipmentVerified: true },
+      opNote: '',
+      whoChecklist: { signIn: true, timeOut: true, signOut: false },
+      delayTracking: 'STAT Direct Entry',
+      implantDetails: 'Surgical Mesh 15x15cm (Lot #SM-8812)',
+      billingTotal: 42000,
+      aiPredictedDuration: '2h 30m (Confidence 88%)',
+      aiPostOpRecommendation: 'Monitor hemoglobin 4-hourly. Transfuse PRBC if Hb < 8.0 g/dL.',
+      pacuStatus: 'Direct Transfer to ICU Post-Op'
+    }
+  ]);
+  const [anesthesiaLogs, setAnesthesiaLogs] = React.useState([
+    { id: 1, time: '09:15 AM', drug: 'IV Propofol 150mg + Fentanyl 100mcg (Induction)' },
+    { id: 2, time: '09:20 AM', drug: 'IV Rocuronium 50mg (Muscle Relaxant)' },
+    { id: 3, time: '10:15 AM', drug: 'IV Heparin 25,000 units (CPB Anticoagulation)' }
+  ]);
+  const [implantsList, setImplantsList] = React.useState([
+    { id: 1, name: 'St-Jude Mechanical Heart Valve', lot: 'LOT-HV-2026-90', serial: 'SN-88412-A', expiry: '2032-12-31' },
+    { id: 2, name: 'Titanium Cranial Plate System', lot: 'CP-4012', serial: 'SN-9011-B', expiry: '2030-06-30' }
+  ]);
 
 
   return (

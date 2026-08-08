@@ -66,15 +66,7 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     setNewLabCollectionMode = () => {},
     newLabRefDoctor = '',
     setNewLabRefDoctor = () => {},
-    testPackages = [],
-    setTestPackages = () => {},
-    reagentsList = [],
-    setReagentsList = () => {},
-    outsourcedSamples = [],
-    setOutsourcedSamples = () => {},
     handleLabResultSubmit = () => {},
-    radiologyWorklist = [],
-    setRadiologyWorklist = () => {},
     radSubTab = 'worklist',
     setRadSubTab = () => {},
     showPacsViewerModal = false,
@@ -95,10 +87,6 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     setSelectedRadTemplate = () => {},
     radVoiceText = '',
     setRadVoiceText = () => {},
-    radPackages = [],
-    setRadPackages = () => {},
-    radMachines = [],
-    setRadMachines = () => {},
     pmsEdition = 'standard',
     setPmsEdition = () => {},
     pmsSubTab = 'pos',
@@ -118,19 +106,11 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
     setShowVoiceBillingModal = () => {},
     showOcrModal = false,
     setShowOcrModal = () => {},
-    pmsHoldBills = [],
-    setPmsHoldBills = () => {},
-    pmsMedicines = [],
-    setPmsMedicines = () => {},
-    pmsStores = [],
-    setPmsStores = () => {},
     getDosageInstruction = () => '',
     handleDispenseMeds = () => {},
     expenses = [],
     setExpenses = () => {},
     branchExpenses = [],
-    refDoctorEarnings = [],
-    setRefDoctorEarnings = () => {},
     handleSettleBill = () => {},
     handleSettleReferralPayout = () => {},
     handleAddExpense = () => {},
@@ -172,6 +152,26 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
   const [showQrVerifyModal, setShowQrVerifyModal] = React.useState(false);
   const [labCategoryFilter, setLabCategoryFilter] = React.useState('all');
   const [selectedLabPatientId, setSelectedLabPatientId] = React.useState('');
+  const [testPackages, setTestPackages] = React.useState([
+    { id: 'PKG-101', name: 'Executive Master Health Package', testsCount: 68, originalPrice: 4500, packagePrice: 1999, category: 'Comprehensive' },
+    { id: 'PKG-102', name: 'Complete Cardiac Risk Panel', testsCount: 14, originalPrice: 3200, packagePrice: 1499, category: 'Cardiology' },
+    { id: 'PKG-103', name: 'Comprehensive Diabetes & Renal Profile', testsCount: 22, originalPrice: 2800, packagePrice: 1199, category: 'Endocrinology' },
+    { id: 'PKG-104', name: 'Senior Citizen Full Body Screening', testsCount: 82, originalPrice: 5500, packagePrice: 2499, category: 'Geriatric' }
+  ]);
+  const [reagentsList, setReagentsList] = React.useState([
+    { id: 'REG-501', name: 'Sysmex Cellpack DCL Diluent (CBC)', lot: 'LOT-SY-2026-A', stockLevel: 14, minThreshold: 5, unit: 'Bottles (20L)', expiry: '2027-04-30', status: 'Optimal' },
+    { id: 'REG-502', name: 'Roche Cobas c501 Glucose HK Assay Kit', lot: 'LOT-RC-8841-B', stockLevel: 2, minThreshold: 4, unit: 'Kits (800 Tests)', expiry: '2026-09-15', status: 'Low Stock Alert' },
+    { id: 'REG-503', name: 'Bio-Rad HbA1c HPLC Reagent Cartridge', lot: 'LOT-BR-9901-C', stockLevel: 8, minThreshold: 3, unit: 'Cartridges', expiry: '2026-08-30', status: 'Expiring Soon' }
+  ]);
+  const [outsourcedSamples, setOutsourcedSamples] = React.useState([
+    { id: 'OUT-9901', patientName: 'Aarav Sharma', testName: 'GeneXpert HLA-B27 PCR', partnerLab: 'Metropolis Healthcare', dispatchTime: '2026-08-08 08:30 AM', trackingNo: 'DHL-884129-IN', tempStatus: '2.4°C (Cold-Chain OK)', status: 'Dispatched' },
+    { id: 'OUT-9902', patientName: 'Ramesh Sen', testName: 'Liquid Biopsy NGS Panel', partnerLab: 'Dr. Lal PathLabs', dispatchTime: '2026-08-07 04:15 PM', trackingNo: 'BLUEDART-9011-X', tempStatus: '4.1°C (Cold-Chain OK)', status: 'Results Received' }
+  ]);
+  const [refDoctorEarnings, setRefDoctorEarnings] = React.useState([
+    { id: 1, doctorName: 'Dr. Sandeep Mehta', testName: 'Lipid Profile & HbA1c', fee: 1800, sharePercent: 15, payout: 270, status: 'Approved' },
+    { id: 2, doctorName: 'Dr. Ananya Ray', testName: 'Brain MRI Contrast', fee: 6500, sharePercent: 20, payout: 1300, status: 'Pending Audit' },
+    { id: 3, doctorName: 'Dr. Deepa Roy', testName: 'Whole Abdomen CT', fee: 4200, sharePercent: 15, payout: 630, status: 'Disbursed' }
+  ]);
 
 
   return (
