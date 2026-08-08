@@ -5,7 +5,7 @@ import {
   Users, CheckCircle, ArrowRight, ArrowLeft,
   Printer, Sparkles, ChevronRight, ChevronLeft, UserPlus,
   Heart, Info, X, Sun, Moon,
-  AlertCircle, BarChart3, Truck,
+  AlertCircle, BarChart3, Truck, ShieldCheck,
   Send, Stethoscope, Video, MapPin, FileSpreadsheet, Plus, FileText, Mic, Scissors, Globe, FolderArchive
 } from 'lucide-react';
 import { DashboardModule } from './modules/dashboard/DashboardModule';
@@ -29,6 +29,7 @@ import { AiInsightsModule } from './modules/ai_insights/AiInsightsModule';
 import { EmployeeModule } from './modules/employee/EmployeeModule';
 import { MisReportingModule } from './modules/mis_reporting/MisReportingModule';
 import { AmbulanceModule } from './modules/ambulance/AmbulanceModule';
+import { InsuranceModule } from './modules/insurance/InsuranceModule';
 
 // ==========================================
 // TYPES & INTERFACES
@@ -582,17 +583,18 @@ export default function App() {
     employee: true,
     mis_reporting: true,
     ambulance: true,
+    insurance: true,
     analytics: true
   });
   const ROLE_PERMISSIONS: Record<string, Record<string, boolean>> = {
-    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, expense: true, ai_insights: true, employee: true, mis_reporting: true, ambulance: true, analytics: true },
-    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, expense: false, ai_insights: true, employee: true, mis_reporting: true, ambulance: true, analytics: true },
-    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, expense: false, ai_insights: true, employee: false, mis_reporting: false, ambulance: true, analytics: false },
-    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, expense: false, ai_insights: true, employee: true, mis_reporting: false, ambulance: true, analytics: false },
-    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: false, ai_insights: true, employee: false, mis_reporting: false, ambulance: true, analytics: false },
-    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, expense: false, ai_insights: false, employee: false, mis_reporting: false, ambulance: false, analytics: false },
-    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, expense: true, ai_insights: false, employee: false, mis_reporting: false, ambulance: false, analytics: false },
-    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: true, ai_insights: true, employee: true, mis_reporting: true, ambulance: true, analytics: true }
+    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, expense: true, ai_insights: true, employee: true, mis_reporting: true, ambulance: true, insurance: true, analytics: true },
+    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, expense: false, ai_insights: true, employee: true, mis_reporting: true, ambulance: true, insurance: true, analytics: true },
+    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, expense: false, ai_insights: true, employee: false, mis_reporting: false, ambulance: true, insurance: false, analytics: false },
+    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, expense: false, ai_insights: true, employee: true, mis_reporting: false, ambulance: true, insurance: true, analytics: false },
+    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: false, ai_insights: true, employee: false, mis_reporting: false, ambulance: true, insurance: true, analytics: false },
+    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, expense: false, ai_insights: false, employee: false, mis_reporting: false, ambulance: false, insurance: false, analytics: false },
+    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, expense: true, ai_insights: false, employee: false, mis_reporting: false, ambulance: false, insurance: false, analytics: false },
+    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: true, ai_insights: true, employee: true, mis_reporting: true, ambulance: true, insurance: true, analytics: true }
   };
 
   // Visibility Check Helper (Combines Admin Global Toggle + Role Access Control)
@@ -2275,6 +2277,12 @@ export default function App() {
                   )}
                 </button>
               )}
+
+              {isModuleVisible('insurance') && (
+                <button onClick={() => setActiveTab('insurance')} className={`sidebar-nav-item ${activeTab === 'insurance' ? 'active' : ''}`} title="Insurance & TPA">
+                  {sidebarCollapsed ? <ShieldCheck size={18} /> : <span>Insurance & TPA Engine</span>}
+                </button>
+              )}
             </>
           )}
 
@@ -2713,6 +2721,15 @@ export default function App() {
 
           {activeTab === 'ambulance' && (
             <AmbulanceModule
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              addToast={addToast}
+              patients={patients}
+            />
+          )}
+
+          {activeTab === 'insurance' && (
+            <InsuranceModule
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               addToast={addToast}
