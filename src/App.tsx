@@ -25,6 +25,7 @@ import { InventoryModule } from './modules/inventory/InventoryModule';
 import { VaccinationModule } from './modules/vaccination/VaccinationModule';
 import { PortalModule } from './modules/portal/PortalModule';
 import { AdminModule } from './modules/admin/AdminModule';
+import { AiInsightsModule } from './modules/ai_insights/AiInsightsModule';
 
 // ==========================================
 // TYPES & INTERFACES
@@ -574,17 +575,18 @@ export default function App() {
     mrd: true,
     billing: true,
     expense: true,
+    ai_insights: true,
     analytics: true
   });
   const ROLE_PERMISSIONS: Record<string, Record<string, boolean>> = {
-    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, expense: true, analytics: true },
-    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, expense: false, analytics: true },
-    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, expense: false, analytics: false },
-    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, expense: false, analytics: false },
-    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: false, analytics: false },
-    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, expense: false, analytics: false },
-    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, expense: true, analytics: false },
-    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: true, analytics: true }
+    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, expense: true, ai_insights: true, analytics: true },
+    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, expense: false, ai_insights: true, analytics: true },
+    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, expense: false, ai_insights: true, analytics: false },
+    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, expense: false, ai_insights: true, analytics: false },
+    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: false, ai_insights: true, analytics: false },
+    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, expense: false, ai_insights: false, analytics: false },
+    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, expense: true, ai_insights: false, analytics: false },
+    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: true, ai_insights: true, analytics: true }
   };
 
   // Visibility Check Helper (Combines Admin Global Toggle + Role Access Control)
@@ -2233,6 +2235,17 @@ export default function App() {
                   {sidebarCollapsed ? <DollarSign size={18} /> : <span>Expense Management</span>}
                 </button>
               )}
+
+              {isModuleVisible('ai_insights') && (
+                <button onClick={() => setActiveTab('ai_insights')} className={`sidebar-nav-item ${activeTab === 'ai_insights' ? 'active' : ''}`} title="AI Insights & ML">
+                  {sidebarCollapsed ? <Sparkles size={18} /> : (
+                    <>
+                      <span>AI Insights & ML</span>
+                      <span className="sidebar-badge" style={{ background: '#9333EA' }}>AI</span>
+                    </>
+                  )}
+                </button>
+              )}
             </>
           )}
 
@@ -2629,6 +2642,19 @@ export default function App() {
               setExpenses={setExpenses}
               branchExpenses={branchExpenses}
               handleAddExpense={handleAddExpense}
+            />
+          )}
+
+          {activeTab === 'ai_insights' && (
+            <AiInsightsModule
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              addToast={addToast}
+              patients={patients}
+              setPatients={setPatients}
+              branchPatients={branchPatients}
+              computedPredictions={computedPredictions}
+              handleSendAIChat={handleSendAIChat}
             />
           )}
 
