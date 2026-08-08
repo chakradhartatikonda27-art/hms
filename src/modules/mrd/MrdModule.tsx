@@ -640,7 +640,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
             <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px' }}>Generate a 72-hour time-limited encrypted link with download passcode.</p>
 
             <div style={{ padding: '14px', background: 'var(--bg-muted)', borderRadius: '8px', margin: '14px 0', fontSize: '11px', fontFamily: 'monospace' }}>
-              https://hexencare.health/roi/share/token-88419024?expires=72h
+              https://siyancare.health/roi/share/token-88419024?expires=72h
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>

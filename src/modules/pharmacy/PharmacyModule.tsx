@@ -157,7 +157,7 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = (props) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
                   <div>
                     <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span>💊 HexenCare Pharmacy Management System (PMS)</span>
+                      <span>💊 SiyanCare Pharmacy Management System (PMS)</span>
                       <span className="badge badge-success" style={{ fontSize: '11px', padding: '4px 10px' }}>Rural & Remote Ready</span>
                     </h2>
                     <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px', fontWeight: 500 }}>
@@ -610,7 +610,7 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = (props) => {
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <div className="card" style={{ width: '420px', maxWidth: '90%', background: 'white', color: 'black', padding: '20px', borderRadius: '8px' }}>
                     <div style={{ textAlign: 'center', borderBottom: '1px border #ccc', paddingBottom: '10px' }}>
-                      <h2 style={{ fontSize: '16px', fontWeight: 800, color: 'black' }}>🏥 HexenCare Pharmacy Tax Invoice</h2>
+                      <h2 style={{ fontSize: '16px', fontWeight: 800, color: 'black' }}>🏥 SiyanCare Pharmacy Tax Invoice</h2>
                       <div style={{ fontSize: '11px', color: '#555' }}>Central Hospital Complex • GSTIN: 07AAACH9011X1Z4</div>
                       <div style={{ fontSize: '10px', color: '#777', marginTop: '2px' }}>Invoice #{pharmacyReceiptData.billNo} • {pharmacyReceiptData.date}</div>
                     </div>

@@ -153,7 +153,7 @@ export const DashboardModule: React.FC<DashboardModuleProps> = (props) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
                   <div>
                     <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span>🏥 Welcome to HexenCare HMS Dashboard</span>
+                      <span>🏥 Welcome to SiyanCare HMS Dashboard</span>
                       <span className="badge badge-success">Live System Active</span>
                     </h2>
                     <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>

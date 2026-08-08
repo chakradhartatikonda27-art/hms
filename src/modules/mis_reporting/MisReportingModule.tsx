@@ -346,7 +346,7 @@ export const MisReportingModule: React.FC<MisReportingModuleProps> = (props) => 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <div>
               <h2 style={{ fontSize: '24px', fontWeight: 800, color: '#38BDF8', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span>📺 HEXENCARE HOSPITAL COMMAND CENTER (LIVE TV MODE)</span>
+                <span>📺 SIYANCARE HOSPITAL COMMAND CENTER (LIVE TV MODE)</span>
               </h2>
               <p style={{ fontSize: '13px', color: '#94A3B8' }}>Live Management Board Display • Real-time Data Sync Every 10s</p>
             </div>

@@ -457,7 +457,7 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
                   <div style={{ padding: '16px', border: '1px solid var(--border)', borderRadius: '8px', background: 'var(--bg-card)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--border)', paddingBottom: '10px' }}>
                       <div>
-                        <strong style={{ fontSize: '14px' }}>HEXENCARE DIAGNOSTICS & PATHOLOGY</strong>
+                        <strong style={{ fontSize: '14px' }}>SIYANCARE DIAGNOSTICS & PATHOLOGY</strong>
                         <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>NABL Accredited Laboratory | License #NABL-2026-8804 (Report #{selectedLabReportId})</div>
                       </div>
                       <div style={{ textAlign: 'right' }}>
@@ -818,12 +818,12 @@ export const PathologyModule: React.FC<PathologyModuleProps> = (props) => {
                       <div style={{ padding: '10px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '4px', border: '1px solid var(--success)' }}>
                         <strong style={{ color: 'var(--success)' }}>✅ REPORT INTEGRITY VERIFIED (100% AUTHENTIC)</strong>
                         <p style={{ marginTop: '4px', color: 'var(--text-main)' }}>
-                          This report digital hash matches the original signature on the HexenCare HMS blockchain ledger.
+                          This report digital hash matches the original signature on the SiyanCare HMS blockchain ledger.
                         </p>
                       </div>
 
                       <div style={{ padding: '8px', border: '1px solid var(--border)', borderRadius: '4px', color: 'var(--text-muted)' }}>
-                        • <strong>Issuing Laboratory:</strong> HexenCare Central Pathology (NABL-2026-8804)<br/>
+                        • <strong>Issuing Laboratory:</strong> SiyanCare Central Pathology (NABL-2026-8804)<br/>
                         • <strong>Signing Pathologist:</strong> Dr. Rajesh K (MD Pathology, Lic #MP-9011)<br/>
                         • <strong>Cryptographic SHA-256 Hash:</strong> <span style={{ fontFamily: 'monospace' }}>8f4e2b3c9a1d...e001</span><br/>
                         • <strong>Timestamp:</strong> 2026-08-08 09:30:12 AM

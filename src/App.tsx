@@ -998,7 +998,7 @@ export default function App() {
     return typeof window !== 'undefined' && window.location.search.includes('app=pharmacy');
   });
 
-  // HexenCare Pharmacy Engine State (3 Editions & 20 Pillars)
+  // SiyanCare Pharmacy Engine State (3 Editions & 20 Pillars)
   const [pmsEdition, setPmsEdition] = useState<'hospital' | 'retail' | 'chain'>('hospital');
   const [pmsSubTab, setPmsSubTab] = useState<'pos_cashier' | 'medicine_master' | 'inventory_batches' | 'purchases_suppliers' | 'prescriptions_ocr' | 'multistore_chain' | 'delivery_crm' | 'reports_ai'>('pos_cashier');
   const [showOcrModal, setShowOcrModal] = useState(false);
@@ -2028,7 +2028,7 @@ export default function App() {
           </div>
           {!sidebarCollapsed && (
             <div>
-              <div style={{ fontWeight: 600, fontSize: '15px', color: 'white' }}>HexenCare</div>
+              <div style={{ fontWeight: 600, fontSize: '15px', color: 'white' }}>SiyanCare</div>
               <div style={{ fontSize: '10px', color: 'var(--muted)', letterSpacing: '0.05em' }}>HEALTH OPERATING SYSTEM</div>
             </div>
           )}
@@ -2350,7 +2350,7 @@ export default function App() {
         <header className="top-navbar">
           <div className="flex align-center gap-md">
             <h1 style={{ fontSize: '18px', fontWeight: 700, color: isStandalonePharmacy ? 'var(--primary)' : 'var(--text-main)' }}>
-              {isStandalonePharmacy ? '💊 HEXENCARE PHARMACY OS (STANDALONE SAAS)' : `${activeRole.toUpperCase().replace('_', ' ')} WORKSPACE`}
+              {isStandalonePharmacy ? '💊 SIYANCARE PHARMACY OS (STANDALONE SAAS)' : `${activeRole.toUpperCase().replace('_', ' ')} WORKSPACE`}
             </h1>
             <span style={{ height: '16px', width: '1px', backgroundColor: 'var(--border)' }}></span>
             
@@ -2365,9 +2365,9 @@ export default function App() {
                 }}
                 style={{ border: 'none', background: 'transparent', fontSize: '12px', fontWeight: 600, color: 'var(--text-main)', cursor: 'pointer', outline: 'none', paddingRight: '12px' }}
               >
-                <option value="metro">{isStandalonePharmacy ? 'Central Warehouse & Hub' : 'HexenCare Metro Hub'}</option>
-                <option value="north">{isStandalonePharmacy ? 'Downtown Retail Branch' : 'HexenCare North Clinic'}</option>
-                <option value="south">{isStandalonePharmacy ? 'Airport Express POS Counter' : 'HexenCare South Specialty'}</option>
+                <option value="metro">{isStandalonePharmacy ? 'Central Warehouse & Hub' : 'SiyanCare Metro Hub'}</option>
+                <option value="north">{isStandalonePharmacy ? 'Downtown Retail Branch' : 'SiyanCare North Clinic'}</option>
+                <option value="south">{isStandalonePharmacy ? 'Airport Express POS Counter' : 'SiyanCare South Specialty'}</option>
               </select>
             </div>
           </div>
@@ -2379,13 +2379,13 @@ export default function App() {
                 const nextMode = !isStandalonePharmacy;
                 setIsStandalonePharmacy(nextMode);
                 if (nextMode) setActiveTab('pharmacy');
-                addToast(nextMode ? 'success' : 'info', nextMode ? '💊 Launched HexenCare Pharmacy OS in Standalone Product Mode!' : '🏥 Returned to HexenCare Hospital Operating System');
+                addToast(nextMode ? 'success' : 'info', nextMode ? '💊 Launched SiyanCare Pharmacy OS in Standalone Product Mode!' : '🏥 Returned to SiyanCare Hospital Operating System');
               }}
               className="btn btn-success"
               style={{ padding: '6px 12px', fontSize: '12px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', background: isStandalonePharmacy ? 'var(--primary)' : 'linear-gradient(135deg, #10B981 0%, #059669 100%)', border: 'none', color: 'white' }}
-              title="Launch HexenCare Pharmacy as a standalone product (Independent Medical Shops & Chains)"
+              title="Launch SiyanCare Pharmacy as a standalone product (Independent Medical Shops & Chains)"
             >
-              <span>{isStandalonePharmacy ? '🏥 Switch to HexenCare HMS' : '💊 Standalone Pharmacy OS'}</span>
+              <span>{isStandalonePharmacy ? '🏥 Switch to SiyanCare HMS' : '💊 Standalone Pharmacy OS'}</span>
             </button>
 
             {/* Real-time Web Data Extractor & Sync Button */}
@@ -3034,7 +3034,7 @@ export default function App() {
               {/* UHID Card */}
               <div style={{ border: '2.5px solid #2563eb', borderRadius: '8px', padding: '16px', backgroundColor: '#090d16', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', right: '-20px', top: '-20px', width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(37,99,235,0.08)' }}></div>
-                <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em', color: '#3b82f6', marginBottom: '8px' }}>HEXENCARE HOSPITALS</div>
+                <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em', color: '#3b82f6', marginBottom: '8px' }}>SIYANCARE HOSPITALS</div>
                 <div style={{ fontSize: '16px', fontWeight: 600, color: 'white', marginBottom: '12px' }}>{receiptDetails.name}</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '11px', color: 'rgba(255,255,255,0.7)', marginBottom: '12px' }}>
                   <div>UHID: <strong>{receiptDetails.uhid}</strong></div>

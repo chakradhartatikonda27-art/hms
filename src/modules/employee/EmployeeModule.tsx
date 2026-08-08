@@ -537,7 +537,7 @@ export const EmployeeModule: React.FC<EmployeeModuleProps> = (props) => {
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div className="card" style={{ width: '360px', borderRadius: '16px', padding: '20px', background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-              <span style={{ fontSize: '12px', fontWeight: 800, color: '#38BDF8' }}>HEXENCARE HEALTHCARE</span>
+              <span style={{ fontSize: '12px', fontWeight: 800, color: '#38BDF8' }}>SIYANCARE HEALTHCARE</span>
               <span className="badge badge-success" style={{ fontSize: '10px' }}>VERIFIED EMP</span>
             </div>
 

@@ -20,7 +20,7 @@ export const AiInsightsModule: React.FC<AiInsightsModuleProps> = (props) => {
 
   const [aiTab, setAiTab] = React.useState<'reports' | 'diet' | 'booking' | 'chatbot' | 'ml_predictions'>('reports');
   const [chatMessages, setChatMessages] = React.useState([
-    { sender: 'bot', text: 'Hello! I am your HexenCare AI Health & Hospital Assistant. How can I help you today? You can ask me to book appointments, generate diet plans, or check lab report status.' }
+    { sender: 'bot', text: 'Hello! I am your SiyanCare AI Health & Hospital Assistant. How can I help you today? You can ask me to book appointments, generate diet plans, or check lab report status.' }
   ]);
   const [userQuery, setUserQuery] = React.useState('');
   const [selectedPatientForDiet, setSelectedPatientForDiet] = React.useState('PX-2026-9041');

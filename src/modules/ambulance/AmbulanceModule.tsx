@@ -47,7 +47,7 @@ export const AmbulanceModule: React.FC<AmbulanceModuleProps> = (props) => {
     { id: 'AMB-101', plate: 'TS-09-EX-4412', type: 'ALS (Advanced Life Support)', driver: 'Vikram Singh', paramedic: 'Nurse Divya', status: 'Available', fuel: '88%', oxygen: '2x 40L Cylinders', location: 'Emergency Bay 1' },
     { id: 'AMB-102', plate: 'TS-09-EX-8841', type: 'ICU Ventilator Unit', driver: 'Ramesh Babu', paramedic: 'EMT Rajesh', status: 'On Trip', fuel: '74%', oxygen: 'Liquid O2 Tank (92%)', location: 'En-Route Hitech City (ETA 6 mins)' },
     { id: 'AMB-103', plate: 'TS-09-EX-1204', type: 'BLS (Basic Life Support)', driver: 'Suresh Kumar', paramedic: 'N/A', status: 'Available', fuel: '95%', oxygen: '1x 20L Cylinder', location: 'North Branch Bay' },
-    { id: 'AMB-104', plate: 'TS-09-EX-9921', type: 'Neonatal Incubator ALS', driver: 'Mohammed Ali', paramedic: 'Sister Leela', status: 'On Trip', fuel: '62%', oxygen: 'Incubator O2 Feed', location: 'Inter-Hospital Transfer (KIMS to HexenCare)' },
+    { id: 'AMB-104', plate: 'TS-09-EX-9921', type: 'Neonatal Incubator ALS', driver: 'Mohammed Ali', paramedic: 'Sister Leela', status: 'On Trip', fuel: '62%', oxygen: 'Incubator O2 Feed', location: 'Inter-Hospital Transfer (KIMS to SiyanCare)' },
     { id: 'AMB-105', plate: 'TS-09-EX-3310', type: 'Mortuary Transport', driver: 'Kiran V', paramedic: 'N/A', status: 'Under Maintenance', fuel: '40%', oxygen: 'N/A', location: 'Central Service Garage' }
   ]);
 
