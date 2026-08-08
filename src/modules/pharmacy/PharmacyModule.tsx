@@ -8,8 +8,8 @@ interface PharmacyModuleProps {
   setPmsSubTab: (tab: any) => void;
   pharmacyLanguage: string;
   setPharmacyLanguage: (lang: any) => void;
-  pharmacyDeptFilter: string;
-  setPharmacyDeptFilter: (filter: string) => void;
+  pharmacyDeptFilter: any;
+  setPharmacyDeptFilter: (filter: any) => void;
   otcBillForm: { customerName: string; medicine: string; qty: string; price: string };
   setOtcBillForm: (form: any) => void;
   handleOtcBillSubmit: (e: React.FormEvent) => void;
@@ -406,7 +406,7 @@ export const PharmacyModule: React.FC<PharmacyModuleProps> = ({
                     <td style={{ fontWeight: 600 }}>{p.name}</td>
                     <td><span className="badge badge-primary">OPD Consultation</span></td>
                     <td>
-                      {p.prescriptions.map((pr, idx) => (
+                      {p.prescriptions?.map((pr, idx) => (
                         <div key={idx} style={{ fontSize: '11px' }}>
                           <strong>{pr.medication} ({pr.dosage})</strong> — <span style={{ color: 'var(--primary)', fontStyle: 'italic' }}>{getDosageInstruction(pr.medication, pharmacyLanguage)}</span>
                         </div>

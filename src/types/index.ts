@@ -79,56 +79,42 @@ export interface EmarRecord {
 export interface Patient {
   id: string;
   name: string;
-  age: number;
+  age: number | string;
   gender: string;
-  phone: string;
-  bloodType: string;
-  allergies: string[];
-  diagnosis: string;
-  vitals: {
-    bp: string;
-    pulse: number;
-    temp: number;
-    spO2: number;
-  };
-  visits: PatientVisit[];
-  prescriptions: Prescription[];
-  labResults: LabResult[];
-  bedNumber?: string;
-  status: 'admitted' | 'discharged' | 'in-consultation' | 'waiting' | 'pathology-pending' | 'pharmacy-pending' | 'opd-completed';
-  totalBill: number;
-  paidBill: number;
-  pendingBill: number;
-  branch: BranchId;
-  mrdCode?: string;
+  phone?: string;
+  bloodType?: string;
+  bloodGroup?: string;
+  allergies?: any;
+  diagnosis?: string;
   esiScore?: number;
-  chiefComplaints?: { complaint: string; duration: string }[];
-  pregnancyStatus?: boolean;
-  systemicExam?: {
-    cvs: string;
-    rs: string;
-    git: string;
-    cns: string;
-  };
-  gcsEye?: number;
-  gcsVerbal?: number;
-  gcsMotor?: number;
-  gcsScore?: number;
+  vitals?: any;
+  visits?: PatientVisit[];
+  prescriptions?: Prescription[];
+  labResults?: LabResult[];
+  bedNumber?: string;
+  status?: string;
+  totalBill?: number;
+  paidBill?: number;
+  refDoctor?: string;
+  mrdCode?: string;
+  linkedIcdCode?: string;
   fluidLogs?: FluidLog[];
-  emarList?: EmarRecord[];
+  emarRecords?: EmarRecord[];
+  gcsTotal?: number;
 }
 
 export interface Bed {
   id: string;
-  number: string;
-  wardType: 'general' | 'private' | 'icu' | 'vip';
-  status: 'occupied' | 'available' | 'maintenance';
+  number?: string;
+  wardType?: string;
+  dailyRate?: number;
+  status: 'occupied' | 'vacant' | 'maintenance' | string;
   patientId?: string;
   patientName?: string;
-  dailyRate: number;
-  npoStatus?: boolean;
-  fallRisk?: 'Low' | 'Moderate' | 'High';
-  isolationTag?: string;
+  admissionDate?: string;
+  assignedNurse?: string;
+  oxyLevel?: number;
+  ventilatorMode?: string;
 }
 
 export interface ExpenseRecord {
@@ -146,13 +132,13 @@ export interface ExpenseRecord {
 export interface RadiologyStudy {
   id: string;
   patientName: string;
-  modality: 'X-Ray' | 'CT' | 'MRI' | 'USG' | 'Echo' | 'Mammography';
+  modality: string;
   studyName: string;
-  priority: 'Routine' | 'Urgent' | 'STAT';
+  priority: string;
   prepStatus: string;
   requestedBy: string;
   date: string;
-  status: 'Order Placed' | 'Patient Prepared' | 'Imaging Completed' | 'PACS Captured' | 'Awaiting Sign-off' | 'Report Signed Off';
+  status: string;
   formFSigned: boolean;
   criticalFlag: boolean;
 }
