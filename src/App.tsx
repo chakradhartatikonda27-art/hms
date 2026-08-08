@@ -19,6 +19,7 @@ import { PathologyModule } from './modules/pathology/PathologyModule';
 import { RadiologyModule } from './modules/radiology/RadiologyModule';
 import { PharmacyModule } from './modules/pharmacy/PharmacyModule';
 import { BillingModule } from './modules/billing/BillingModule';
+import { ExpenseModule } from './modules/expense/ExpenseModule';
 import { MrdModule } from './modules/mrd/MrdModule';
 import { InventoryModule } from './modules/inventory/InventoryModule';
 import { VaccinationModule } from './modules/vaccination/VaccinationModule';
@@ -572,17 +573,18 @@ export default function App() {
     bloodbank: true,
     mrd: true,
     billing: true,
+    expense: true,
     analytics: true
   });
   const ROLE_PERMISSIONS: Record<string, Record<string, boolean>> = {
-    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, analytics: true },
-    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, analytics: true },
-    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, analytics: false },
-    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, analytics: false },
-    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, analytics: false },
-    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, analytics: false },
-    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, analytics: false },
-    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, analytics: true }
+    admin: { dashboard: true, registration: true, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: true, expense: true, analytics: true },
+    doctor: { dashboard: true, registration: false, appointments: true, consultation: true, icu: true, ot: true, wards: true, lab: true, pharmacy: true, bloodbank: true, mrd: true, billing: false, expense: false, analytics: true },
+    anesthetist: { dashboard: true, registration: false, appointments: false, consultation: false, icu: true, ot: true, wards: false, lab: true, pharmacy: true, bloodbank: true, mrd: false, billing: false, expense: false, analytics: false },
+    nurse: { dashboard: true, registration: true, appointments: true, consultation: false, icu: true, ot: true, wards: true, lab: true, pharmacy: false, bloodbank: true, mrd: true, billing: false, expense: false, analytics: false },
+    receptionist: { dashboard: true, registration: true, appointments: true, consultation: false, icu: false, ot: false, wards: true, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: false, analytics: false },
+    lab_tech: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: true, pharmacy: false, bloodbank: true, mrd: false, billing: false, expense: false, analytics: false },
+    pharmacist: { dashboard: false, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: true, bloodbank: false, mrd: false, billing: true, expense: true, analytics: false },
+    accountant: { dashboard: true, registration: false, appointments: false, consultation: false, icu: false, ot: false, wards: false, lab: false, pharmacy: false, bloodbank: false, mrd: true, billing: true, expense: true, analytics: true }
   };
 
   // Visibility Check Helper (Combines Admin Global Toggle + Role Access Control)
@@ -2225,6 +2227,12 @@ export default function App() {
                   {sidebarCollapsed ? <DollarSign size={18} /> : <span>Billing & Claims</span>}
                 </button>
               )}
+
+              {isModuleVisible('expense') && (
+                <button onClick={() => setActiveTab('expense')} className={`sidebar-nav-item ${activeTab === 'expense' ? 'active' : ''}`} title="Expense Management">
+                  {sidebarCollapsed ? <DollarSign size={18} /> : <span>Expense Management</span>}
+                </button>
+              )}
             </>
           )}
 
@@ -2608,6 +2616,18 @@ export default function App() {
               branchExpenses={branchExpenses}
               handleSettleBill={handleSettleBill}
               handleSettleReferralPayout={handleSettleReferralPayout}
+              handleAddExpense={handleAddExpense}
+            />
+          )}
+
+          {activeTab === 'expense' && (
+            <ExpenseModule
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              addToast={addToast}
+              expenses={expenses}
+              setExpenses={setExpenses}
+              branchExpenses={branchExpenses}
               handleAddExpense={handleAddExpense}
             />
           )}
