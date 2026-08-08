@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, FileText, Shield, Database, CheckCircle2, AlertTriangle, Lock, Tag, Clock, FolderArchive, Sparkles, UserCheck, Merge, Download, Share2, Eye, FileCheck, Filter, Layers } from 'lucide-react';
+import { Search, FileText, Shield, Database, CheckCircle2, AlertTriangle, Lock, Tag, Clock, FolderArchive, Sparkles, UserCheck, Merge, Download, Share2, Eye, FileCheck, Filter, Layers, ArrowRight } from 'lucide-react';
 
 export interface MrdModuleProps {
   [key: string]: any;
@@ -21,14 +21,13 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
     ...rest
   } = props;
 
-  const [mrdTab, setMrdTab] = React.useState<'timeline' | 'coding' | 'ai_summary' | 'storage' | 'quality' | 'ocr_pdf' | 'merge_tool' | 'sharing_roi' | 'confidentiality' | 'retention'>('timeline');
+  const [mrdTab, setMrdTab] = React.useState<'pipeline' | 'timeline' | 'coding' | 'ai_summary' | 'storage' | 'quality' | 'ocr_pdf' | 'merge_tool' | 'sharing_roi' | 'confidentiality' | 'retention'>('pipeline');
   const [mrdSearchTerm, setMrdSearchTerm] = React.useState('');
   const [icdVersionFilter, setIcdVersionFilter] = React.useState<'all' | 'icd10' | 'icd11'>('all');
   const [selectedPatientForTimeline, setSelectedPatientForTimeline] = React.useState<string>('PX-2026-9041');
   const [showAiSummaryModal, setShowAiSummaryModal] = React.useState(false);
   const [showMergeModal, setShowMergeModal] = React.useState(false);
   const [showShareModal, setShowShareModal] = React.useState(false);
-  const [showOcrDocModal, setShowOcrDocModal] = React.useState(false);
   const [mergePrimaryId, setMergePrimaryId] = React.useState('PX-2026-9041');
   const [mergeDuplicateId, setMergeDuplicateId] = React.useState('PX-2026-9099');
 
@@ -57,6 +56,18 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
     { id: 'AUD-103', chartName: 'ICU Telemetry Record - PX-2026-9043', score: '100%', dischargeSummaryStatus: 'Complete', consentForm: 'Verified', status: 'Passed' }
   ]);
 
+  // 8-Step MRD Lifecycle Stages
+  const lifecycleSteps = [
+    { step: 1, title: 'Patient Visit', icon: '🏥', count: 18, desc: 'OPD / IPD / STAT Arrival' },
+    { step: 2, title: 'Medical Records Created', icon: '📄', count: 14, desc: 'EHR / EMR Generation' },
+    { step: 3, title: 'Clinical Coding', icon: '🏷️', count: 11, desc: 'ICD-10 / ICD-11 Mapping' },
+    { step: 4, title: 'Quality Review', icon: '📋', count: 9, desc: 'Completeness Audit' },
+    { step: 5, title: 'Doctor Verification', icon: '👨‍⚕️', count: 8, desc: 'Digital Signature Lock' },
+    { step: 6, title: 'Secure Storage', icon: '🔒', count: 42, desc: '256-Bit Vault & Rack A-04' },
+    { step: 7, title: 'Retrieval & Sharing', icon: '📤', count: 6, desc: 'ROI Portal Token Link' },
+    { step: 8, title: 'Archive / Retention', icon: '📜', count: 120, desc: '7-Year Archival Rule' }
+  ];
+
   // 360° Timeline Events for selected patient
   const patientTimelineEvents = [
     { date: '2026-08-08 10:15 AM', type: 'OPD Consultation', title: 'Cardiology Consultation', dept: 'OPD Desk', doctor: 'Dr. Sandeep Mehta', details: 'Chief Complaint: Retro-sternal pressure. Prescribe Telmisartan 40mg PO QD, Lipvas 10mg HS.', icdCode: 'I10 (Hypertension)' },
@@ -81,10 +92,10 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
           <div>
             <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span>🗄️ Medical Records Department (MRD Enterprise Suite)</span>
-              <span className="badge badge-primary" style={{ fontSize: '11px', padding: '4px 10px' }}>⭐ 360° EHR & AI Coding Ready</span>
+              <span className="badge badge-primary" style={{ fontSize: '11px', padding: '4px 10px' }}>⭐ 8-Step Lifecycle & AI Coding Ready</span>
             </h2>
             <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px', fontWeight: 500 }}>
-              Centralized Medical Records Repository, 360° Chronological Timeline, AI ICD-10/11 Assistant, OCR Document Reader, and Release of Information (ROI).
+              End-to-end Medical Record Lifecycle: Patient Visit ➔ Records Created ➔ Clinical Coding ➔ Quality Review ➔ Doctor Verification ➔ Secure Storage ➔ Retrieval & Sharing ➔ Archival.
             </p>
           </div>
 
@@ -101,8 +112,41 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
           </div>
         </div>
 
-        {/* 10 Navigation Sub-Tabs */}
+        {/* 8-Step Lifecycle Visual Pipeline Flow Bar */}
+        <div style={{ marginTop: '20px', background: 'var(--bg-card)', padding: '16px', borderRadius: '10px', border: '1px solid var(--border)' }}>
+          <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--primary)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span>🔄 8-Step Medical Record Operational Lifecycle Flow</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', overflowX: 'auto', paddingBottom: '4px' }}>
+            {lifecycleSteps.map((s, idx) => (
+              <React.Fragment key={s.step}>
+                <div style={{ padding: '10px 12px', borderRadius: '8px', background: 'var(--bg-muted)', border: '1px solid var(--border)', minWidth: '125px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 700 }}>STEP {s.step}</div>
+                  <div style={{ fontSize: '12px', fontWeight: 800, marginTop: '2px', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span>{s.icon}</span>
+                    <span>{s.title}</span>
+                  </div>
+                  <div style={{ fontSize: '10px', color: 'var(--primary)', marginTop: '4px', fontWeight: 700 }}>{s.count} Active Records</div>
+                </div>
+
+                {idx < lifecycleSteps.length - 1 && (
+                  <span style={{ fontSize: '14px', color: 'var(--primary)', fontWeight: 800 }}>➔</span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
+        {/* Navigation Sub-Tabs */}
         <div style={{ display: 'flex', gap: '8px', marginTop: '16px', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => setMrdTab('pipeline')}
+            className={`btn ${mrdTab === 'pipeline' ? 'btn-primary' : 'btn-secondary'}`}
+            style={{ padding: '8px 14px', fontSize: '12px', fontWeight: 700, borderRadius: '8px' }}
+          >
+            🔄 Operational Lifecycle Board
+          </button>
           <button
             onClick={() => setMrdTab('timeline')}
             className={`btn ${mrdTab === 'timeline' ? 'btn-primary' : 'btn-secondary'}`}
@@ -162,7 +206,61 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       </div>
 
-      {/* PILLAR 1: 360° PATIENT MEDICAL TIMELINE */}
+      {/* SUB-TAB 1: OPERATIONAL LIFECYCLE PIPELINE BOARD */}
+      {mrdTab === 'pipeline' && (
+        <div className="card">
+          <h3 style={{ fontSize: '15px', fontWeight: 800, color: 'var(--primary)', marginBottom: '12px' }}>
+            🔄 Active Medical Records Moving Through 8-Step Lifecycle
+          </h3>
+          <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '16px' }}>
+            Real-time status tracking of all patient records from initial visit registration to permanent archival.
+          </p>
+
+          <div className="table-container">
+            <table className="data-table" style={{ fontSize: '12px' }}>
+              <thead>
+                <tr>
+                  <th>Medical Record ID</th>
+                  <th>Patient Name & UHID</th>
+                  <th>Department Source</th>
+                  <th>Current Lifecycle Step</th>
+                  <th>ICD Coding Status</th>
+                  <th>Quality Review</th>
+                  <th>Doctor Verification</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(patients || branchPatients).slice(0, 5).map((p: any, idx: number) => (
+                  <tr key={p.id || idx}>
+                    <td className="font-semibold">MRD-2026-00{idx + 1}</td>
+                    <td>
+                      <div style={{ fontWeight: 700 }}>{p.name}</div>
+                      <div style={{ fontSize: '10px', color: 'var(--primary)', fontFamily: 'monospace' }}>{p.id}</div>
+                    </td>
+                    <td><span className="badge badge-primary">OPD & IPD Combined</span></td>
+                    <td>
+                      <span className="badge badge-success" style={{ fontSize: '11px', padding: '4px 8px' }}>
+                        Step {idx + 3}: {lifecycleSteps[idx + 2]?.title || 'Secure Storage'}
+                      </span>
+                    </td>
+                    <td><span className="badge badge-warning">I10 / BA00 Linked</span></td>
+                    <td><strong style={{ color: 'var(--success)' }}>96% Passed</strong></td>
+                    <td><span className="badge badge-success">✓ Verified & Digitally Signed</span></td>
+                    <td>
+                      <button className="btn btn-secondary" style={{ padding: '2px 6px', fontSize: '10px' }} onClick={() => addToast('info', `Advanced Record MRD-2026-00${idx + 1} to Next Step`)}>
+                        ➔ Advance Step
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* SUB-TAB 2: 360° PATIENT MEDICAL TIMELINE */}
       {mrdTab === 'timeline' && (
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
@@ -222,7 +320,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 2: ICD-10 & ICD-11 CLINICAL CODING */}
+      {/* SUB-TAB 3: ICD-10 & ICD-11 CLINICAL CODING */}
       {mrdTab === 'coding' && (
         <div className="grid gap-lg" style={{ gridTemplateColumns: '1.8fr 1.2fr' }}>
           <div className="card">
@@ -322,7 +420,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 3: RECORD QUALITY & COMPLETENESS SCORE */}
+      {/* SUB-TAB 4: RECORD QUALITY & COMPLETENESS SCORE */}
       {mrdTab === 'quality' && (
         <div className="card">
           <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)', marginBottom: '12px' }}>📋 Medical Record Quality Monitoring & Completeness Score</h3>
@@ -367,7 +465,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 4: PHYSICAL FILE STORAGE & TRACKING */}
+      {/* SUB-TAB 5: PHYSICAL FILE STORAGE & TRACKING */}
       {mrdTab === 'storage' && (
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
@@ -424,7 +522,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 5: SMART DOCUMENT OCR & PDF READER */}
+      {/* SUB-TAB 6: SMART DOCUMENT OCR & PDF READER */}
       {mrdTab === 'ocr_pdf' && (
         <div className="card">
           <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)', marginBottom: '12px' }}>🔍 Smart Document OCR & Full-Text PDF Search</h3>
@@ -440,7 +538,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 6: RELEASE OF INFORMATION (ROI) */}
+      {/* SUB-TAB 7: RELEASE OF INFORMATION (ROI) */}
       {mrdTab === 'sharing_roi' && (
         <div className="card">
           <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)', marginBottom: '12px' }}>📤 Release of Information (ROI) & Third-Party Sharing</h3>
@@ -451,7 +549,7 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 7: PATIENT CONFIDENTIALITY & LEGAL HOLD */}
+      {/* SUB-TAB 8: PATIENT CONFIDENTIALITY & LEGAL HOLD */}
       {mrdTab === 'confidentiality' && (
         <div className="card">
           <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)', marginBottom: '12px' }}>🔒 Patient Confidentiality Controls & DISHA/HIPAA Access Locks</h3>
@@ -476,12 +574,12 @@ export const MrdModule: React.FC<MrdModuleProps> = (props) => {
         </div>
       )}
 
-      {/* PILLAR 8: RETENTION & ARCHIVING POLICIES */}
+      {/* SUB-TAB 9: RETENTION & ARCHIVING POLICIES */}
       {mrdTab === 'retention' && (
         <div className="card">
           <h3 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)', marginBottom: '12px' }}>📜 Data Retention Policies & Automatic Archiving</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '11px', marginBottom: '16px' }}>Configure retention rules (e.g., Adult records 7 years, Pediatric records until age 25, MLC cases permanent).</p>
-          <button className="btn btn-primary" style={{ fontSize: '12px' }} onClick={() => addToast('info', 'Automated Archiving Rule Executed: Archived 120 Medical Charts older than 7 years.')}>
+          <button className="btn btn-primary" style={{ fontSize: '12px' }} onClick={() => addToast('info', 'Automated Archival Rule Executed: Archived 120 Medical Charts older than 7 years.')}>
             🔄 Run Archival Retention Pipeline
           </button>
         </div>
